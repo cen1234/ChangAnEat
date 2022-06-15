@@ -1,0 +1,58 @@
+#配置全局变量 IP地址更换时 照片的路径不会出错【到项目的最后进行统一修改 现在使用写死的】
+changAn:
+  ip: 192.168.1.238
+  port: 9090
+  name: changAn
+
+server:
+  #端口号
+  port: 9090
+  servlet:
+    context-path: /changAn
+
+spring:
+  #配置redis
+  redis:
+    host: 192.168.17.128
+    port: 6379
+    database: 0
+  #spring-cache
+  cache:
+    redis:
+      time-to-live: 1800000 #设置过期时间为30分钟
+  #配置邮箱
+  mail:
+    host: smtp.qq.com
+    username: 1474250484@qq.com
+    password: chohhhrfgjsuheji
+    default-encoding: UTF-8
+    protocol: smtp
+    port: 25
+    properties:
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+  #设置项目名称
+  application:
+    name: changAn
+  #连接数据库
+  datasource:
+    #数据库连接的url mysql 端口号 数据库名称 编码集 时区
+    url: jdbc:mysql://localhost:3306/changan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    #数据库连接的名称
+    username: root
+    #数据库连接的密码
+    password: glockiebae
+  #启用支持put、delete
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+mybatis-plus:
+  #设置主键的生成策略
+  global-config:
+    db-config:
+      id-type: assign_id
+  configuration:
+    #在映射实体或者属性时 将数据库中表名和字段名中的下划线去掉 按照驼峰命名法及进行映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
